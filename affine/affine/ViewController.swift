@@ -48,11 +48,11 @@ class ViewController: UIViewController {
     
     
     func setupCircleView() {
-        self.circleView = UIView(frame: CGRectMake(0, 0, kCircleViewSize, kCircleViewSize))
+        self.circleView = UIView(frame: CGRect(x: 0, y: 0, width: kCircleViewSize, height: kCircleViewSize))
         
         self.circleView.layer.cornerRadius = kCircleViewSize / 2.0
         
-        self.circleView.backgroundColor = UIColor.redColor()
+        self.circleView.backgroundColor = UIColor.red
      
     }
     
@@ -70,36 +70,36 @@ class ViewController: UIViewController {
         self.view.addGestureRecognizer(doubleTap)
         
         
-        //双击时忽略单机，这个非常重要
-        singleTap.requireGestureRecognizerToFail(doubleTap)
+        //双击时忽略单击！！！
+        singleTap.require(toFail: doubleTap)
     
         
     }
     
     
-    func tappedOnMainView(tap: UITapGestureRecognizer) {
+    func tappedOnMainView(_ tap: UITapGestureRecognizer) {
         if (self.animationHappending) {
             return
         }
         
         //默认状态，为双击准备
-        var transform = CGAffineTransformIdentity
+        var transform = CGAffineTransform.identity
         
         if (tap.numberOfTapsRequired == 1) {
-            transform = CGAffineTransformScale(self.circleView.transform, 1.3, 1.3)
+            transform = self.circleView.transform.scaledBy(x: 1.3, y: 1.3)
         }
         
         //开始动画
         self.animationHappending = true
         
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
             //动画放大缩小
             self.circleView.transform = transform
-        }) {
+        }, completion: {
             (finished) -> Void in
             //动画完成
             self.animationHappending = false
-        }
+        }) 
     }
 
 
