@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         self.circleView.layer.cornerRadius = kCircleViewSize / 2.0
         
         //圆形视图颜色
-        self.circleView.backgroundColor = UIColor.red
+        self.circleView.backgroundColor = UIColor.green
     }
     
     //手势滑动
