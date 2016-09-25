@@ -26,7 +26,9 @@ class SlackLoadingView: UIView, CAAnimationDelegate {
     var interval:Double = 1
     
     //四条线的颜色
-    var colors:[UIColor] = [UIColor.init(rgba: "#9DD4E9"), UIColor.init(rgba: "#F5BD58"), UIColor.init(rgba: "#FF317E"), UIColor.init(rgba: "#6FC9B5")]
+    //var colors:[UIColor] = [UIColor.init(rgba: "#9DD4E9"), UIColor.init(rgba: "#F5BD58"), UIColor.init(rgba: "#FF317E"), UIColor.init(rgba: "#6FC9B5")]
+    
+    var colors:[UIColor] = [UIColor("#9DD4E9"), UIColor("#F5BD58"), UIColor("#FF317E"), UIColor("#6FC9B5")]
     
     //动画的状态
     private(set) var status:AnimationStatus = .Normal
@@ -44,7 +46,7 @@ class SlackLoadingView: UIView, CAAnimationDelegate {
     }
     
     
-     //MARK: Initial Methods
+    //MARK: Initial Methods
     convenience init(fram: CGRect, colors: [UIColor]) {
         self.init()
         self.frame = frame
@@ -77,13 +79,13 @@ class SlackLoadingView: UIView, CAAnimationDelegate {
                 if flag {
                     status = .Normal
                     
-//                    
-//                    let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(Double(interval) * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-//                    DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-//                        if self.status != .Animating {
-//                            self.startAnimation()
-//                        }
-//                    })
+                    //
+                    //                    let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(Double(interval) * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                    //                    DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+                    //                        if self.status != .Animating {
+                    //                            self.startAnimation()
+                    //                        }
+                    //                    })
                     
                     //or more simply
                     DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
@@ -91,7 +93,7 @@ class SlackLoadingView: UIView, CAAnimationDelegate {
                             self.startAnimation()
                         }
                     }
-
+                    
                 }
             }
         }
@@ -147,7 +149,7 @@ class SlackLoadingView: UIView, CAAnimationDelegate {
             layer.addSublayer(line)
             lines.append(line)
         }
-     
+        
         
     }
     
@@ -166,10 +168,10 @@ class SlackLoadingView: UIView, CAAnimationDelegate {
         return path
     }
     
-   
-//    private func point(x: CGFloat, y: CGFloat) -> CGPoint {
-//        return CGPoint(x: x, y: y)
-//    }
+    
+    //    private func point(x: CGFloat, y: CGFloat) -> CGPoint {
+    //        return CGPoint(x: x, y: y)
+    //    }
     
     private func angle(angle: Double) -> CGFloat {
         return CGFloat(angle * (M_PI) / 180)
@@ -194,8 +196,8 @@ class SlackLoadingView: UIView, CAAnimationDelegate {
     
     
     /**
-    线的第一步动画，线长从长变短
-    */
+     线的第一步动画，线长从长变短
+     */
     
     private func lineAnimationOne() {
         let lineAnimationOne = CABasicAnimation.init(keyPath: "strokeEnd")
@@ -311,8 +313,8 @@ class SlackLoadingView: UIView, CAAnimationDelegate {
     }
     
     /**
-    继续动画
-    */
+     继续动画
+     */
     func resumeAnimation() {
         layer.resumeAnimation()
         for lineLayer in lines {
@@ -322,7 +324,7 @@ class SlackLoadingView: UIView, CAAnimationDelegate {
     }
     
     
-
+    
 }
 
 extension CALayer {

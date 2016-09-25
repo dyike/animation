@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>slack loading.xcscheme</key>
+		<key>slackLoading.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>A6F0F95D1D97DDC50040C517</key>
+		<key>A654E4511D981B08007BE0C6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
