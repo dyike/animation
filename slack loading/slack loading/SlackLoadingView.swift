@@ -76,11 +76,22 @@ class SlackLoadingView: UIView, CAAnimationDelegate {
             if animation.keyPath == "strokEnd" {
                 if flag {
                     status = .Normal
-                    dispatch_after(DispatchTime.now(dispatch_time_t(DISPATCH_TIME_NOW), Int64(interval) * Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), {
+                    
+//                    
+//                    let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(Double(interval) * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+//                    DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+//                        if self.status != .Animating {
+//                            self.startAnimation()
+//                        }
+//                    })
+                    
+                    //or more simply
+                    DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
                         if self.status != .Animating {
                             self.startAnimation()
                         }
-                    })
+                    }
+
                 }
             }
         }
@@ -338,13 +349,3 @@ extension CALayer {
         beginTime = sincePause
     }
 }
-
-
-
-
-
-
-
-
-
-
